@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Add New Product";
+    Layout = "~/Views/Shared/CreateLayout.cshtml";
+
+}
+@model Shopify.Models.ProductModel
+<header>
+    <h2>My Shopify Store</h2>
+</header>
+<div class="container">
+<h3>Add New Product</h3>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="field">
+        <label asp-for="Title">Tittle:</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="field">
+        <label asp-for="Quantity">Quantity:</label>
+        <input asp-for="Quantity" type="number" class="form-control" />
+    </div>
+
+    <div>
+        <label>Product Images</label>
+
+        <!-- Hidden file input -->
+        <input type="file" id="ImageFile" name="ImageFile" multiple class="form-control" style="display:none;" />
+
+        <!-- Media grid -->
+        <div id="mediaGrid" class="media-grid">
+            <!-- Add new box -->
+            <div class="media-item add-new" onclick="document.getElementById('ImageFile').click();">
+                <span>+</span>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Add Product</button>
+</form>
+</div>
+<!-- JavaScript for preview -->
+<script>
+    const imageInput = document.getElementById('ImageFile');
+    const mediaGrid = document.getElementById('mediaGrid');
+
+    imageInput.addEventListener('change', function (event) {
+        const files = event.target.files;
+
+        // Remove old previews except the + box
+        const addBox = mediaGrid.querySelector('.add-new');
+        mediaGrid.innerHTML = '';
+        mediaGrid.appendChild(addBox);
+
+        for (let file of files) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imgBox = document.createElement('div');
+                imgBox.classList.add('media-item');
+                imgBox.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview" />
+                `;
+                mediaGrid.insertBefore(imgBox, addBox);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

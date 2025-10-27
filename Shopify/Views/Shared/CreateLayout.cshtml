@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Shopify Store</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <style>
+        /* ===== Global Layout Styles ===== */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fb;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding:5px;
+        }
+        .container{
+            width:60%;
+            background:white;
+            margin-top:20px;
+        }
+        .field{
+            width:50% 
+        }
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .media-item {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .media-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .media-item.add-new {
+                cursor: pointer;
+                font-size: 36px;
+                font-weight: bold;
+                color: #777;
+                background-color: #fafafa;
+                transition: 0.2s ease;
+            }
+
+                .media-item.add-new:hover {
+                    background-color: #eaeaea;
+                }
+        
+     
+    </style>
+</head>
+<body>
+
+   
+    <!-- ===== Page Body ===== -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    @* <!-- ===== Footer ===== -->
+    <footer>
+        &copy; @DateTime.Now.Year - My Shopify Store
+    </footer> *@
+
+</body>
+</html>
