@@ -1,0 +1,6 @@
+@ShopifyAPI_HostAddress = http://localhost:5116
+
+GET {{ShopifyAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
