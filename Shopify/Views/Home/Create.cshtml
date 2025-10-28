@@ -12,24 +12,26 @@
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="field">
-        <label asp-for="Title">Tittle:</label>
-        <input asp-for="Title" class="form-control" />
+        <label asp-for="Title">Product Name:</label>
+        <input asp-for="Title" class="form-control" placeholder="Enter name of product" />
     </div>
 
     <div class="field">
         <label asp-for="Quantity">Quantity:</label>
-        <input asp-for="Quantity" type="number" class="form-control" />
+        <input asp-for="Quantity" type="number" class="form-control" placeholder="Enter quantity" />
     </div>
+        <div class="field">
+            <label asp-for="Price">Price:</label>
+            <input asp-for="Price" type="number" class="form-control" placeholder="Enter price" />
+        </div>
 
     <div>
         <label>Product Images</label>
 
-        <!-- Hidden file input -->
         <input type="file" id="ImageFile" name="ImageFile" multiple class="form-control" style="display:none;" />
 
-        <!-- Media grid -->
         <div id="mediaGrid" class="media-grid">
-            <!-- Add new box -->
+            <!-- Addnew box -->
             <div class="media-item add-new" onclick="document.getElementById('ImageFile').click();">
                 <span>+</span>
             </div>
@@ -40,7 +42,7 @@
     <button type="submit" class="btn btn-success">Add Product</button>
 </form>
 </div>
-<!-- JavaScript for preview -->
+
 <script>
     const imageInput = document.getElementById('ImageFile');
     const mediaGrid = document.getElementById('mediaGrid');
@@ -48,7 +50,6 @@
     imageInput.addEventListener('change', function (event) {
         const files = event.target.files;
 
-        // Remove old previews except the + box
         const addBox = mediaGrid.querySelector('.add-new');
         mediaGrid.innerHTML = '';
         mediaGrid.appendChild(addBox);
